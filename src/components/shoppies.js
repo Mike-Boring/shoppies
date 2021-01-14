@@ -13,7 +13,6 @@ class Shoppies extends Component {
     }
 
     getMovies = () => {
-        console.log("getMovies called")
         let searchTerm = this.state.searchTerm
         request
           .get("http://www.omdbapi.com/?t=" + searchTerm + "&apikey=40431a19")
@@ -35,7 +34,6 @@ class Shoppies extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        console.log("handlesubmit")
         this.getMovies()
         this.setState(() => ({
             searchTerm: ""
@@ -50,9 +48,32 @@ class Shoppies extends Component {
           }));
     }
 
+    unselectMovie = (id) => {
+        console.log("unselect movie ran-id", id)
+        let newNominatedList = [...this.state.nominatedList];
+        let filteredNewNominatedList = newNominatedList.filter(movie => { 
+            return movie.imdbID !== id;
+        })
+        console.log("new list", filteredNewNominatedList)
+        this.setState(() => ({
+            nominatedList: filteredNewNominatedList
+          }));
+    }
+
     render() {
         let imageUrl = this.state.searchResult.Poster
         let selectMovie = this.selectMovie
+        let nominatedDisplayCopy =  [...this.state.nominatedList]
+        let nominatedList = nominatedDisplayCopy.map((movie)=>{
+            return (
+                <div className="nominatedMovie" key={movie.imdbID}>
+                    <h1>{movie.Title}</h1>
+                    <img src={movie.Poster} width="200" alt={movie.Title}/><br />
+                    <h2>{movie.Released}</h2>
+                    <button onClick={() => this.unselectMovie(movie.imdbID)}>Remove Nomination</button>
+                </div>
+            )
+        })
         return (
             <div className="main">
                 <div className="banner">
@@ -76,13 +97,15 @@ class Shoppies extends Component {
                 <div className="searchResults">
                     <h2>Search Results</h2>
                     <h1>{this.state.searchResult.Title}</h1>
-                    <img src={imageUrl} width="300"/><br />
+                    <img src={imageUrl} width="300" alt={this.state.searchResult.Title}/><br />
                     <h2>{this.state.searchResult.Released}</h2>
                     <button onClick={selectMovie}>Nominate</button>
                 </div>
                 <div className="nominatedDisplay">
                     <h2>My Shoppies Nominations</h2>
-                    {/* {nominatedList} */}
+                    <div className="nominatedListContainer">
+                        {nominatedList}
+                    </div>
                 </div>
                 {/* <div className="completedBanner">
                     <h1>YOU HAVE NOMINATED YOUR 5 MOVIES</h1>
