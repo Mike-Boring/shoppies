@@ -37,11 +37,22 @@ class Shoppies extends Component {
         event.preventDefault();
         console.log("handlesubmit")
         this.getMovies()
-        event.target.value = ''
+        this.setState(() => ({
+            searchTerm: ""
+          }));
     };
+
+    selectMovie = () => {
+        let newNominatedList = [...this.state.nominatedList];
+        newNominatedList.push(this.state.searchResult)
+        this.setState(() => ({
+            nominatedList: newNominatedList
+          }));
+    }
 
     render() {
         let imageUrl = this.state.searchResult.Poster
+        let selectMovie = this.selectMovie
         return (
             <div className="main">
                 <div className="banner">
@@ -67,6 +78,7 @@ class Shoppies extends Component {
                     <h1>{this.state.searchResult.Title}</h1>
                     <img src={imageUrl} width="300"/><br />
                     <h2>{this.state.searchResult.Released}</h2>
+                    <button onClick={selectMovie}>Nominate</button>
                 </div>
                 <div className="nominatedDisplay">
                     <h2>My Shoppies Nominations</h2>
