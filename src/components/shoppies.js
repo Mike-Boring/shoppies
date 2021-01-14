@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import "./shoppies.css"
 import request from "superagent"
 
-
-
 class Shoppies extends Component {
     constructor(props) {
         super(props);
@@ -43,6 +41,7 @@ class Shoppies extends Component {
     };
 
     render() {
+        let imageUrl = this.state.searchResult.Poster
         return (
             <div className="main">
                 <div className="banner">
@@ -65,15 +64,17 @@ class Shoppies extends Component {
                 </div>
                 <div className="searchResults">
                     <h2>Search Results</h2>
-                    {/* {searchResult} */}
+                    <h1>{this.state.searchResult.Title}</h1>
+                    <img src={imageUrl} width="300"/><br />
+                    <h2>{this.state.searchResult.Released}</h2>
                 </div>
                 <div className="nominatedDisplay">
                     <h2>My Shoppies Nominations</h2>
                     {/* {nominatedList} */}
                 </div>
-                <div className="completedBanner">
+                {/* <div className="completedBanner">
                     <h1>YOU HAVE NOMINATED YOUR 5 MOVIES</h1>
-                </div>
+                </div> */}
             </div>
         )
     }
