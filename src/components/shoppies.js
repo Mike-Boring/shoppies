@@ -16,11 +16,11 @@ class Shoppies extends Component {
           searchTerm: ""
         };
     }
-
+    //http://www.omdbapi.com/?t=rocky&apikey=40431a19
     getMovies = () => {
         let searchTerm = this.state.searchTerm
         request
-          .get("http://www.omdbapi.com/?t=" + searchTerm + "&apikey=40431a19")
+          .get("https://www.omdbapi.com/?t=" + searchTerm + "&apikey=40431a19")
           .then(res => {
             this.setState((state) => ({
                 searchResult: res.body
