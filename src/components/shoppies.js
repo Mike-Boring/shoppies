@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import "./shoppies.css"
 import request from "superagent"
+import Button from 'react-bootstrap/Button';
+import Carousel from 'react-bootstrap/Carousel'
+import bg1 from "../images/bg1.jpg"
+import bg2 from "../images/bg2.jpg"
+
 
 class Shoppies extends Component {
     constructor(props) {
@@ -41,11 +46,21 @@ class Shoppies extends Component {
     };
 
     selectMovie = () => {
-        let newNominatedList = [...this.state.nominatedList];
-        newNominatedList.push(this.state.searchResult)
-        this.setState(() => ({
-            nominatedList: newNominatedList
-          }));
+        if (this.state.nominatedList.length < 4) {
+            let newNominatedList = [...this.state.nominatedList];
+            newNominatedList.push(this.state.searchResult)
+            this.setState(() => ({
+                nominatedList: newNominatedList
+              }));
+
+        } else {
+            let newNominatedList = [...this.state.nominatedList];
+            newNominatedList.push(this.state.searchResult)
+            this.setState(() => ({
+                nominatedList: newNominatedList
+              }));
+            document.getElementById('completedBanner').classList.remove("hide");
+        }
     }
 
     unselectMovie = (id) => {
@@ -59,6 +74,13 @@ class Shoppies extends Component {
             nominatedList: filteredNewNominatedList
           }));
     }
+    resetView = () => {
+        document.getElementById('completedBanner').classList.add("hide");
+        this.setState(() => ({
+            nominatedList: [],
+            searchResult: {}
+          }));
+    }
 
     render() {
         let imageUrl = this.state.searchResult.Poster
@@ -67,49 +89,91 @@ class Shoppies extends Component {
         let nominatedList = nominatedDisplayCopy.map((movie)=>{
             return (
                 <div className="nominatedMovie" key={movie.imdbID}>
-                    <h1>{movie.Title}</h1>
-                    <img src={movie.Poster} width="200" alt={movie.Title}/><br />
-                    <h2>{movie.Released}</h2>
-                    <button onClick={() => this.unselectMovie(movie.imdbID)}>Remove Nomination</button>
+                    <h3 className="movieTitle">{movie.Title}</h3>
+                    <img src={movie.Poster} width="180px" alt={movie.Title}/><br /><br/>
+                    <Button variant="dark" className="stretch" onClick={() => this.unselectMovie(movie.imdbID)}>Remove Nomination</Button>
                 </div>
             )
         })
+        let buttonCheck = () => {
+            if (this.state.nominatedList.filter(e => e.imdbID === this.state.searchResult.imdbID).length > 0) {
+                return <Button variant="dark" className="stretch" onClick={() => this.unselectMovie(this.state.searchResult.imdbID)}>Remove Nomination</Button>
+            } else {
+                return <Button variant="dark" className="stretch" onClick={selectMovie}>Nominate</Button>
+            }
+        }
         return (
+            <div className="mainbg">
+
+            <div className="banner">
+                <div className="topdiv"></div>
+                <Carousel>
+                    <Carousel.Item>
+                        <img
+                        className="d-block w-100"
+                        src={bg1}
+                        alt="First slide"
+                        />
+                        <Carousel.Caption>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img
+                        className="d-block w-100"
+                        src={bg2}
+                        alt="Third slide"
+                        />
+                        <Carousel.Caption>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                </Carousel>
+                <br/><br/>
+            </div>
             <div className="main">
-                <div className="banner">
-                    <p>Image Banner Here</p>
-                </div>
                 <div className="searchInput">
-                    <h1>Welcome to Shoppies!</h1>
-                    <h2>Search for 5 movies to nominate below.</h2>
+                    <h1 className="white">Welcome to Shoppies!</h1>
+                    <h2 className="white">Search for 5 movies to nominate below.</h2>
                     <form onSubmit= {this.handleSubmit}>
                         <input
                             type="text"
                             name="search"
                             className="searchFormInput"
-                            placeholder="Movie Name...."
+                            placeholder="Enter A Movie Name to Search For........"
                             value={this.state.searchTerm}
                             onChange={this.handleChange}
                         />
-                        <button>SUBMIT</button>
+                        &nbsp;&nbsp;<Button variant="dark">SUBMIT</Button>
                     </form>
                 </div>
-                <div className="searchResults">
-                    <h2>Search Results</h2>
-                    <h1>{this.state.searchResult.Title}</h1>
-                    <img src={imageUrl} width="300" alt={this.state.searchResult.Title}/><br />
-                    <h2>{this.state.searchResult.Released}</h2>
-                    <button onClick={selectMovie}>Nominate</button>
-                </div>
-                <div className="nominatedDisplay">
-                    <h2>My Shoppies Nominations</h2>
-                    <div className="nominatedListContainer">
-                        {nominatedList}
+                <div className="content">
+                    <div className="searchResults">
+                        <h2>Search Results</h2>
+                        {this.state.searchResult.Title && <h2 className="movieTitle">{this.state.searchResult.Title}</h2>}
+                        
+                        <img src={imageUrl} width="300" alt={this.state.searchResult.Title}/><br /><br/>
+                        {this.state.searchResult.Released && <h5 className="stretch">({this.state.searchResult.Released})</h5>}
+                        <h3>{this.state.searchResult.Plot}</h3>
+                        <br/>
+                        {this.state.searchResult.Title && buttonCheck()}
+                        
+                    </div>
+                    <div className="nominatedDisplay">
+                        <h2>My 5 Shoppies Nominations</h2>
+                        <div className="nominatedListContainer">
+                            {nominatedList}
+                        </div>
                     </div>
                 </div>
-                {/* <div className="completedBanner">
+                <br/>
+                <br/>
+                <div id="completedBanner" className="hide">
                     <h1>YOU HAVE NOMINATED YOUR 5 MOVIES</h1>
-                </div> */}
+                    <h3>Thank you for your nominations.</h3>
+                    <Button variant="dark"  onClick={this.resetView} >Reset</Button>&nbsp;&nbsp;<Button variant="dark"  onClick={this.resetView} >Submit</Button>
+                </div>
+            </div>
+            <div className="footer">
+            </div>
             </div>
         )
     }
