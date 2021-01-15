@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Carousel from 'react-bootstrap/Carousel'
 import bg1 from "../images/bg1.jpg"
 import bg2 from "../images/bg2.jpg"
+import ls from 'local-storage'
 
 
 class Shoppies extends Component {
@@ -16,6 +17,14 @@ class Shoppies extends Component {
           searchTerm: ""
         };
     }
+
+    componentDidMount = () => {
+        this.setState(() => ({
+            nominatedList: ls.get('nominatedList') || []
+          }));
+    }
+
+
     //http://www.omdbapi.com/?t=rocky&apikey=40431a19
     getMovies = () => {
         let searchTerm = this.state.searchTerm
@@ -51,35 +60,40 @@ class Shoppies extends Component {
             newNominatedList.push(this.state.searchResult)
             this.setState(() => ({
                 nominatedList: newNominatedList
-              }));
+            }));
+            let nominatedListSaved = newNominatedList
+            ls.set('nominatedList', nominatedListSaved) 
 
         } else {
             let newNominatedList = [...this.state.nominatedList];
             newNominatedList.push(this.state.searchResult)
             this.setState(() => ({
                 nominatedList: newNominatedList
-              }));
+            }));
+            let nominatedListSaved = newNominatedList
+            ls.set('nominatedList', nominatedListSaved) 
             document.getElementById('completedBanner').classList.remove("hide");
         }
     }
 
     unselectMovie = (id) => {
-        console.log("unselect movie ran-id", id)
         let newNominatedList = [...this.state.nominatedList];
         let filteredNewNominatedList = newNominatedList.filter(movie => { 
             return movie.imdbID !== id;
         })
-        console.log("new list", filteredNewNominatedList)
         this.setState(() => ({
             nominatedList: filteredNewNominatedList
           }));
+        let nominatedListSaved = filteredNewNominatedList
+        ls.set('nominatedList', nominatedListSaved) 
     }
     resetView = () => {
         document.getElementById('completedBanner').classList.add("hide");
         this.setState(() => ({
             nominatedList: [],
             searchResult: {}
-          }));
+        }));
+        ls.set('nominatedList', []) 
     }
 
     render() {
