@@ -151,7 +151,7 @@ class Shoppies extends Component {
                         {this.state.searchResult.Title && <h2 className="movieTitle">{this.state.searchResult.Title}</h2>}
                         
                         <img src={imageUrl} width="300" alt={this.state.searchResult.Title}/><br /><br/>
-                        {this.state.searchResult.Released && <h5 className="stretch">({this.state.searchResult.Released})</h5>}
+                        {this.state.searchResult.Year && <h3 className="stretch">({this.state.searchResult.Year})</h3>}
                         <h3>{this.state.searchResult.Plot}</h3>
                         <br/>
                         {this.state.searchResult.Title && buttonCheck()}

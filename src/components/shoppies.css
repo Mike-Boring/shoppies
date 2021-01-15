@@ -21,6 +21,7 @@
 }
 .searchFormInput {
   width: 91%;
+  font-size: 20px;
 }
 .searchInput {
   text-align: center;
@@ -68,7 +69,7 @@
 }
 .movieTitle {
   text-align: center;
-  background-color: #343a40;
+  background-color: black;
   color: white;
   padding: 5px;
 }
