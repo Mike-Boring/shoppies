@@ -44,6 +44,18 @@
   text-align: center;
 }
 #completedBanner {
+  margin-left: auto;
+  margin-right: auto;
+  height: 300px;
+  margin-top: 47px;
+  text-align: center;
+  background-color: #000000d9;
+  color: white;
+  padding: 25px;
+  padding-top: 100px;
+  z-index: 400;
+}
+#completedBannerBg {
   position: absolute;
   margin-left: auto;
   margin-right: auto;
@@ -51,14 +63,10 @@
   right: 0;
   top: 650px;
   height: 400px;
-  margin-top: 20px;
-  text-align: center;
-  background-color: black;
-  border-top: 1px solid grey;
-  border-bottom: 1px solid grey;
-  color: white;
-  padding: 25px;
-  padding-top: 100px;
+  width: 100%;
+  background-image: url(../images/film-bg.png);
+  background-repeat: repeat-x;
+  z-index: 300;
 }
 .hide {
   display: none;

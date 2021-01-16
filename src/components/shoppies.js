@@ -72,7 +72,7 @@ class Shoppies extends Component {
             }));
             let nominatedListSaved = newNominatedList
             ls.set('nominatedList', nominatedListSaved) 
-            document.getElementById('completedBanner').classList.remove("hide");
+            document.getElementById('completedBannerBg').classList.remove("hide");
         }
     }
 
@@ -88,7 +88,7 @@ class Shoppies extends Component {
         ls.set('nominatedList', nominatedListSaved) 
     }
     resetView = () => {
-        document.getElementById('completedBanner').classList.add("hide");
+        document.getElementById('completedBannerBg').classList.add("hide");
         this.setState(() => ({
             nominatedList: [],
             searchResult: {}
@@ -120,7 +120,7 @@ class Shoppies extends Component {
             <div className="mainbg">
 
             <div className="banner">
-                <div className="topdiv"></div>
+                {/* <div className="topdiv"></div> */}
                 <Carousel>
                     <Carousel.Item>
                         <img
@@ -145,8 +145,8 @@ class Shoppies extends Component {
             </div>
             <div className="main">
                 <div className="searchInput">
-                    <h1 className="white">Welcome to Shoppies!</h1>
-                    <h2 className="white">Search for 5 movies to nominate below.</h2>
+                    <h1 className="white">Welcome to The Shoppies: Movie awards for entrepreneurs</h1><br />
+                    <h2 className="white">Search for 5 movies to nominate below.</h2><br />
                     <form onSubmit= {this.handleSubmit}>
                         <input
                             type="text"
@@ -180,10 +180,12 @@ class Shoppies extends Component {
                 </div>
                 <br/>
                 <br/>
-                <div id="completedBanner" className="hide">
-                    <h1>YOU HAVE NOMINATED YOUR 5 MOVIES</h1>
-                    <h3>Thank you for your nominations.</h3>
-                    <Button variant="dark"  onClick={this.resetView} >Reset</Button>&nbsp;&nbsp;<Button variant="dark"  onClick={this.resetView} >Submit</Button>
+                <div id="completedBannerBg" className="hide">
+                    <div id="completedBanner" >
+                        <h1>YOU HAVE NOMINATED YOUR 5 MOVIES</h1>
+                        <h3>Thank you for your nominations.</h3>
+                        <Button variant="dark"  onClick={this.resetView} >Reset</Button>&nbsp;&nbsp;<Button variant="dark"  onClick={this.resetView} >Submit</Button>
+                    </div>
                 </div>
             </div>
             <div className="footer">
