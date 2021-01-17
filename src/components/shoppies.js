@@ -145,9 +145,9 @@ class Shoppies extends Component {
             </div>
             <div className="main">
                 <div className="searchInput">
-                    <h1 className="white">Welcome to The Shoppies: Movie awards for entrepreneurs</h1><br />
-                    <h2 className="white">Search for 5 movies to nominate below.</h2><br />
-                    <form onSubmit= {this.handleSubmit}>
+                    <h1 className="white animate__animated animate__fadeInUpBig animate__delay-.5s">Welcome to The Shoppies: Movie awards for entrepreneurs</h1><br />
+                    <h2 className="white animate__animated animate__flipInX animate__delay-1s">Search for 5 movies to nominate below.</h2><br />
+                    <form onSubmit= {this.handleSubmit} className=" animate__animated animate__fadeIn animate__delay-2s">
                         <input
                             type="text"
                             name="search"
@@ -160,7 +160,7 @@ class Shoppies extends Component {
                     </form>
                 </div>
                 <div className="content">
-                    <div className="searchResults">
+                    <div className="searchResults animate__animated animate__backInLeft animate__delay-2s">
                         <h2>Search Results</h2>
                         {this.state.searchResult.Title && <h2 className="movieTitle">{this.state.searchResult.Title}</h2>}
                         
@@ -171,7 +171,7 @@ class Shoppies extends Component {
                         {this.state.searchResult.Title && buttonCheck()}
                         
                     </div>
-                    <div className="nominatedDisplay">
+                    <div className="nominatedDisplay animate__animated animate__backInRight animate__delay-3s">
                         <h2>My 5 Shoppies Nominations</h2>
                         <div className="nominatedListContainer">
                             {nominatedList}
