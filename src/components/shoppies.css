@@ -25,14 +25,15 @@
 }
 .searchInput {
   text-align: center;
+  padding-right: 15px;
 }
 .nominatedDisplay {
-  flex-basis: 75%;
+  flex-basis: 70%;
   padding: 25px;
   background-color: lightgrey;
   border: 1px solid grey;
   margin-top: 20px;
-  margin-left: 20px;
+  min-width: 700px;
 }
 .nominatedListContainer {
   display: flex;

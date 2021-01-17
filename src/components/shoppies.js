@@ -104,7 +104,7 @@ class Shoppies extends Component {
             return (
                 <div className="nominatedMovie" key={movie.imdbID}>
                     <h3 className="movieTitle">{movie.Title}</h3>
-                    <img src={movie.Poster} width="180px" alt={movie.Title}/><br /><br/>
+                    <img src={movie.Poster} width="100%" alt={movie.Title}/><br /><br/>
                     <Button variant="dark" className="stretch" onClick={() => this.unselectMovie(movie.imdbID)}>Remove Nomination</Button>
                 </div>
             )
