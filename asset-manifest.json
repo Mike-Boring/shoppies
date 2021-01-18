@@ -1,25 +1,26 @@
 {
   "files": {
-    "main.css": "/shoppies/static/css/main.ed1be7fc.chunk.css",
-    "main.js": "/shoppies/static/js/main.aaddc07c.chunk.js",
-    "main.js.map": "/shoppies/static/js/main.aaddc07c.chunk.js.map",
-    "runtime-main.js": "/shoppies/static/js/runtime-main.c77c8ddd.js",
-    "runtime-main.js.map": "/shoppies/static/js/runtime-main.c77c8ddd.js.map",
-    "static/js/2.ab8d60c8.chunk.js": "/shoppies/static/js/2.ab8d60c8.chunk.js",
-    "static/js/2.ab8d60c8.chunk.js.map": "/shoppies/static/js/2.ab8d60c8.chunk.js.map",
-    "static/js/3.2962b3eb.chunk.js": "/shoppies/static/js/3.2962b3eb.chunk.js",
-    "static/js/3.2962b3eb.chunk.js.map": "/shoppies/static/js/3.2962b3eb.chunk.js.map",
+    "main.css": "/shoppies/static/css/main.b1bc3884.chunk.css",
+    "main.js": "/shoppies/static/js/main.a7587511.chunk.js",
+    "main.js.map": "/shoppies/static/js/main.a7587511.chunk.js.map",
+    "runtime-main.js": "/shoppies/static/js/runtime-main.6aebdf75.js",
+    "runtime-main.js.map": "/shoppies/static/js/runtime-main.6aebdf75.js.map",
+    "static/js/2.8fe2037c.chunk.js": "/shoppies/static/js/2.8fe2037c.chunk.js",
+    "static/js/2.8fe2037c.chunk.js.map": "/shoppies/static/js/2.8fe2037c.chunk.js.map",
+    "static/js/3.9ac59787.chunk.js": "/shoppies/static/js/3.9ac59787.chunk.js",
+    "static/js/3.9ac59787.chunk.js.map": "/shoppies/static/js/3.9ac59787.chunk.js.map",
     "index.html": "/shoppies/index.html",
-    "static/css/main.ed1be7fc.chunk.css.map": "/shoppies/static/css/main.ed1be7fc.chunk.css.map",
-    "static/js/2.ab8d60c8.chunk.js.LICENSE.txt": "/shoppies/static/js/2.ab8d60c8.chunk.js.LICENSE.txt",
+    "static/css/main.b1bc3884.chunk.css.map": "/shoppies/static/css/main.b1bc3884.chunk.css.map",
+    "static/js/2.8fe2037c.chunk.js.LICENSE.txt": "/shoppies/static/js/2.8fe2037c.chunk.js.LICENSE.txt",
     "static/media/bg1.ef617897.jpg": "/shoppies/static/media/bg1.ef617897.jpg",
     "static/media/bg2.47710e89.jpg": "/shoppies/static/media/bg2.47710e89.jpg",
+    "static/media/completedBanner.css": "/shoppies/static/media/film-bg.15e0fb8f.png",
     "static/media/shoppies.css": "/shoppies/static/media/theater-bg.66f3c328.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.c77c8ddd.js",
-    "static/js/2.ab8d60c8.chunk.js",
-    "static/css/main.ed1be7fc.chunk.css",
-    "static/js/main.aaddc07c.chunk.js"
+    "static/js/runtime-main.6aebdf75.js",
+    "static/js/2.8fe2037c.chunk.js",
+    "static/css/main.b1bc3884.chunk.css",
+    "static/js/main.a7587511.chunk.js"
   ]
 }
