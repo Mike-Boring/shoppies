@@ -1,0 +1,18 @@
+.stretch {
+  width: 100%;
+  text-align: center;
+}
+.movieTitle {
+  text-align: center;
+  background-color: black;
+  color: white;
+  padding: 5px;
+}
+.searchResults {
+  flex-basis: 25%;
+  padding: 25px;
+  background-color: lightgrey;
+  border: 1px solid grey;
+  margin-top: 20px;
+  margin-right: 20px;
+}

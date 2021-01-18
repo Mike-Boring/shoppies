@@ -1,0 +1,11 @@
+.white {
+  color: white;
+}
+.searchFormInput {
+  width: 91%;
+  font-size: 20px;
+}
+.searchInput {
+  text-align: center;
+  padding-right: 15px;
+}
